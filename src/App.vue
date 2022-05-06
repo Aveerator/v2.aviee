@@ -1,26 +1,47 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
-</template>
+<script lang="js">
+import SpinnerOne from "./components/SpinnerOne.vue";
 
-<script>
-import HelloWorld from "./components/HelloWorld.vue";
+
+function addElement(yes){
+    var yees = document.getElementById("text").value;
+    yes.push(yees);
+    console.log(yes);
+}
 
 export default {
   name: "App",
+  methods: {
+    addElement: addElement
+  },
   components: {
-    HelloWorld,
+    SpinnerOne,
+  },
+  data() {
+    return {
+      items: ["Add new spinny bois into the << input and apply!"],
+    };
   },
 };
 </script>
 
+<template>
+  <input type="text" id="text" />
+  <button @click="addElement(items)" class="addbutton">Apply</button>
+  <div class="body">
+    <SpinnerOne v-for="(text, index) in items" :key="index">{{
+      text
+    }}</SpinnerOne>
+  </div>
+</template>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.addbutton {
+  background-color: transparent;
+  color: black;
+  border: 0mm;
+}
+.addbutton:hover {
+  background-color: black;
+  color: white;
 }
 </style>

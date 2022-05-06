@@ -52,5 +52,11 @@
   },
   "lint-staged": {
     "*.{js,jsx,vue}": "vue-cli-service lint"
-  }
+  },
+  "prettier/prettier": [
+    "error",
+    {
+      "endOfLine": "auto"
+    }
+  ]
 }
